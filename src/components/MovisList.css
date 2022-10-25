@@ -1,0 +1,13 @@
+.card {
+    width: 25%;
+}
+
+.card-container {
+    display: flex;
+    padding: 3rem;
+}
+
+img {
+    height: 10rem;
+    width: auto;
+}

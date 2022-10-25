@@ -1,0 +1,17 @@
+nav {
+    display: flex;
+    background-color: red;
+    justify-content: space-between;
+}
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    align-items: center;
+}
+li {
+    margin: 0 1rem;
+}
+.title {
+    margin-left: 1rem;
+}
