@@ -1,29 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 
 
-class SearchMovies extends React.Component{
+const SearchMovies = ({setMovies}) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {search: ""}
-        this.handleChange = this.handleChange.bind(this)
+    const [query, setQuery] = useState("")
+
+    const searchMovie = async (e) => {
+        e.preventDefault();
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=7852554c50acaf2521b9f96c170fb91a&query=${query}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data);
+        setMovies(data.results);
+    };
+
+    const handleChange = (e) => {
+            setQuery(e.target.value)
     }
-
-    handleChange(e){
-        this.setState(
-            {search: e.target.value}
-        )
-    }
-
-    render() {
-        /*console.log(this.state.search)*/
-        return (
-            <form action="">
-                <input type="search" value={this.state.search} onChange={this.handleChange} placeholder="Rechercher"/>
-                {JSON.stringify(this.state)}
+    /*console.log(this.state.search)*/
+    return (
+        <div>
+            <form onSubmit={searchMovie}>
+                <input type="search" value={query} onChange={handleChange} placeholder="Rechercher"/>
+                <button type="submit">Recherche</button>
+                {/*{movies.map((moviesParam) => <MovieList key={moviesParam.id} {...moviesParam}/>)}*/}
             </form>
-        )
-    }
+        </div>
+    )
 }
 
 export default SearchMovies;

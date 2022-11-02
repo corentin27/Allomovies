@@ -15,7 +15,7 @@ const Details = () => {
             .then(data =>{
                 setMovie(data)
             })
-    },[])
+    })
 
     const {title, poster_path, overview,release_date} = movie;
 
